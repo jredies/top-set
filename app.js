@@ -71,7 +71,7 @@ function writeJson(key, value) {
 }
 
 function epleyOneRepMax(reps, weight) {
-  return weight * (1 + reps / 30);
+  return reps === 1 ? weight : weight * (1 + reps / 30);
 }
 
 function equivalentWeight(oneRepMax, reps) {
