@@ -9,8 +9,7 @@ const categories = [
   {
     id: "main",
     number: "1",
-    title: "Main compound lifts",
-    note: "Big moves · build strength",
+    title: "Main lifts",
     exercises: [
       { id: "barbell-back-squat", number: 1, name: "Barbell back squat", tone: "orange", tags: ["legs"] },
       { id: "deadlift-variation", number: 2, name: "Deadlift variation", subtitle: "Straight-bar deadlift / Trap-bar deadlift", tone: "orange", tags: ["legs", "pull"] },
@@ -25,8 +24,7 @@ const categories = [
   {
     id: "assistance",
     number: "2",
-    title: "Assistance / accessories",
-    note: "Build muscle · fill the gaps",
+    title: "Accessories",
     exercises: [
       { id: "lat-pulldown", number: 9, name: "Lat pulldown", tone: "green", tags: ["pull"] },
       { id: "dumbbell-z-press", number: 10, name: "Dumbbell Z-press", tone: "blue", tags: ["push", "core"] },
@@ -42,8 +40,7 @@ const categories = [
   {
     id: "core",
     number: "3",
-    title: "Core / trunk",
-    note: "A stronger middle",
+    title: "Core",
     exercises: [
       { id: "dead-bug", number: 18, name: "Dead bug", tone: "purple", tags: ["core"] },
       { id: "decline-sit-up", number: 19, name: "Decline sit-up / decline crunch", tone: "purple", tags: ["core"] },
@@ -120,13 +117,11 @@ function cardMarkup(exercise) {
       </div>
       <div class="saved-area">
         <div>
-          <div class="saved-label">Best top set</div>
           <p class="saved-value${emptyClass}" aria-label="${ariaCurrent}">${current}</p>
         </div>
-        ${record ? `<p class="saved-date">saved on this phone</p>` : ""}
       </div>
       <div class="equivalents${record ? "" : " empty-state"}" aria-label="Equivalent weights">
-        ${TARGET_REPS.map((reps, index) => `<div class="equivalent"><span class="equivalent-label">${reps} rep${reps === 1 ? "" : "s"}</span><span class="equivalent-value">${equivalents[index]}</span></div>`).join("")}
+        ${TARGET_REPS.map((reps, index) => `<div class="equivalent"><span class="equivalent-label">${reps}×</span><span class="equivalent-value">${equivalents[index]}</span></div>`).join("")}
       </div>
       <div class="entry-row">
         <div class="input-wrap">
@@ -151,7 +146,6 @@ function render() {
       <div class="category-header">
         <span class="category-number">${category.number}</span>
         <h2 class="category-title" id="heading-${category.id}">${category.title}</h2>
-        <span class="category-note">${category.note}</span>
       </div>
       ${category.exercises.map(cardMarkup).join("")}
     </section>`).join("");
