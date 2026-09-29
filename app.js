@@ -1,5 +1,5 @@
 const STORAGE_KEY = "top-set-records-v1";
-const UNDO_KEY = "top-set-undo-v1";
+const UNDO_KEY = "top-set-undo-v2";
 const MIN_REPS = 1;
 const MAX_REPS = 15;
 const WEIGHT_STEP = 0.5;
