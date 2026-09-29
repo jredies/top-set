@@ -23,10 +23,13 @@
             <h1>Your best sets</h1>
           </div>
         </div>
-        <button class="undo-button" id="undoButton" type="button" disabled>
-          <span class="undo-icon" aria-hidden="true">↶</span>
-          <span>Undo</span>
-        </button>
+        <div class="header-actions">
+          <button class="undo-button" id="undoButton" type="button" disabled>
+            <span class="undo-icon" aria-hidden="true">↶</span>
+            <span>Undo</span>
+          </button>
+          <button class="reset-button" id="resetButton" type="button" disabled>Reset</button>
+        </div>
       </header>
 
       <section class="intro-card" aria-label="How Top Set works">
@@ -55,6 +58,17 @@
     </main>
 
     <div id="liveRegion" class="sr-only" aria-live="polite"></div>
+    <div class="dialog-backdrop" id="resetDialog" hidden>
+      <div class="reset-dialog" role="dialog" aria-modal="true" aria-labelledby="resetDialogTitle" aria-describedby="resetDialogDescription">
+        <div class="dialog-kicker">Safety check</div>
+        <h2 id="resetDialogTitle">Reset all best sets?</h2>
+        <p id="resetDialogDescription">This clears every saved value on this phone. You can undo this once.</p>
+        <div class="dialog-actions">
+          <button class="dialog-cancel" id="cancelResetButton" type="button">Cancel</button>
+          <button class="dialog-confirm" id="confirmResetButton" type="button">Reset all</button>
+        </div>
+      </div>
+    </div>
     <script src="app.js" defer></script>
   </body>
 </html>

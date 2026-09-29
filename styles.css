@@ -93,6 +93,11 @@ h1 { margin-bottom: 0; font-size: clamp(25px, 6vw, 33px); line-height: 1.05; let
 .undo-button:not(:disabled):hover { background: #fff; }
 .undo-button:disabled { cursor: default; opacity: 0.38; }
 .undo-icon { font-size: 20px; line-height: 0; }
+.header-actions { display: flex; align-items: center; gap: 7px; }
+.reset-button { min-height: 40px; padding: 0 12px; border: 1px solid #efcaca; border-radius: 13px; color: #a33f47; background: rgba(255, 246, 246, 0.88); cursor: pointer; font-size: 14px; font-weight: 750; transition: opacity 160ms ease, transform 160ms ease, background 160ms ease; }
+.reset-button:not(:disabled):active { transform: scale(0.97); }
+.reset-button:not(:disabled):hover { background: #fff0f0; }
+.reset-button:disabled { cursor: default; opacity: 0.35; }
 
 .intro-card {
   display: flex;
@@ -176,6 +181,16 @@ h1 { margin-bottom: 0; font-size: clamp(25px, 6vw, 33px); line-height: 1.05; let
 .footer-rule { flex: 1; height: 1px; background: var(--line); }
 
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.dialog-backdrop { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 20px; background: rgba(19, 35, 61, 0.32); backdrop-filter: blur(5px); }
+.dialog-backdrop[hidden] { display: none; }
+.reset-dialog { width: min(100%, 360px); padding: 22px; border: 1px solid rgba(255,255,255,0.72); border-radius: 24px; background: #fff; box-shadow: 0 24px 70px rgba(19, 35, 61, 0.22); }
+.dialog-kicker { margin-bottom: 7px; color: #a33f47; font-size: 11px; font-weight: 850; letter-spacing: 0.14em; text-transform: uppercase; }
+.reset-dialog h2 { margin: 0 0 8px; font-size: 23px; letter-spacing: -0.04em; }
+.reset-dialog p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.45; }
+.dialog-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 20px; }
+.dialog-actions button { min-height: 46px; border-radius: 13px; cursor: pointer; font-size: 14px; font-weight: 800; }
+.dialog-cancel { border: 1px solid var(--line); color: var(--ink); background: #fff; }
+.dialog-confirm { border: 1px solid #a33f47; color: #fff; background: #a33f47; }
 
 @media (min-width: 640px) {
   .app-shell { padding-right: 24px; padding-left: 24px; }
@@ -191,6 +206,8 @@ h1 { margin-bottom: 0; font-size: clamp(25px, 6vw, 33px); line-height: 1.05; let
   .offline-pill { align-self: flex-end; }
   .category-note { display: none; }
   .tag-row { max-width: 45%; }
+  .header-actions { gap: 5px; }
+  .undo-button, .reset-button { padding-right: 10px; padding-left: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

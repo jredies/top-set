@@ -217,6 +217,7 @@ function updateUndoButton() {
   const button = document.querySelector("#undoButton");
   button.disabled = !undoState;
   button.setAttribute("aria-label", undoState ? "Undo last change" : "Nothing to undo");
+  document.querySelector("#resetButton").disabled = Object.keys(records).length === 0;
 }
 
 function undoLastChange() {
@@ -229,6 +230,28 @@ function undoLastChange() {
   announce("Last change undone.");
 }
 
+function openResetDialog() {
+  if (Object.keys(records).length === 0) return;
+  const dialog = document.querySelector("#resetDialog");
+  dialog.hidden = false;
+  document.querySelector("#cancelResetButton").focus();
+}
+
+function closeResetDialog() {
+  document.querySelector("#resetDialog").hidden = true;
+}
+
+function resetAllRecords() {
+  if (Object.keys(records).length === 0) return;
+  undoState = { records: structuredClone(records), changedId: null, action: "reset" };
+  records = {};
+  writeJson(STORAGE_KEY, records);
+  writeJson(UNDO_KEY, undoState);
+  closeResetDialog();
+  render();
+  announce("All saved sets reset. Undo is available.");
+}
+
 function announce(message) {
   const liveRegion = document.querySelector("#liveRegion");
   liveRegion.textContent = message;
@@ -236,6 +259,10 @@ function announce(message) {
 }
 
 document.querySelector("#undoButton").addEventListener("click", undoLastChange);
+document.querySelector("#resetButton").addEventListener("click", openResetDialog);
+document.querySelector("#cancelResetButton").addEventListener("click", closeResetDialog);
+document.querySelector("#confirmResetButton").addEventListener("click", resetAllRecords);
+window.addEventListener("keydown", (event) => { if (event.key === "Escape") closeResetDialog(); });
 render();
 
 if ("serviceWorker" in navigator) {
