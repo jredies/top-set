@@ -1,0 +1,12 @@
+{
+  "name": "Top Set",
+  "short_name": "Top Set",
+  "description": "Your best top set for every exercise, saved on this phone.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f7f8fb",
+  "theme_color": "#f7f8fb",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

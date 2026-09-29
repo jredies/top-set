@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f7f8fb" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Top Set" />
+    <meta name="description" content="Your best top set for every exercise, saved on this phone." />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Top Set</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <div class="brand-lockup">
+          <div class="brand-mark" aria-hidden="true">TS</div>
+          <div>
+            <p class="eyebrow">TOP SET</p>
+            <h1>Your best sets</h1>
+          </div>
+        </div>
+        <button class="undo-button" id="undoButton" type="button" disabled>
+          <span class="undo-icon" aria-hidden="true">↶</span>
+          <span>Undo</span>
+        </button>
+      </header>
+
+      <section class="intro-card" aria-label="How Top Set works">
+        <div class="intro-copy">
+          <span class="intro-dot" aria-hidden="true"></span>
+          <div>
+            <strong>One best top set per exercise</strong>
+            <p>Enter reps and kg. Stronger comparable sets replace the number automatically.</p>
+          </div>
+        </div>
+        <span class="offline-pill"><span class="status-dot" aria-hidden="true"></span>On this phone</span>
+      </section>
+
+      <div class="list-heading">
+        <h2>Exercise menu</h2>
+        <p>Equivalents use the Epley estimate</p>
+      </div>
+
+      <div id="exerciseList" class="exercise-list"></div>
+
+      <footer class="app-footer">
+        <span class="footer-rule"></span>
+        <span>kg only · 1–15 reps</span>
+        <span class="footer-rule"></span>
+      </footer>
+    </main>
+
+    <div id="liveRegion" class="sr-only" aria-live="polite"></div>
+    <script src="app.js" defer></script>
+  </body>
+</html>
