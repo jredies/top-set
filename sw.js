@@ -1,4 +1,4 @@
-const CACHE_NAME = "top-set-shell-v1";
+const CACHE_NAME = "top-set-shell-v2";
 const APP_SHELL = ["./", "./index.html", "./styles.css", "./app.js", "./manifest.webmanifest", "./favicon.svg"];
 
 self.addEventListener("install", (event) => {
