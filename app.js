@@ -55,7 +55,6 @@ const categories = [
 const exerciseMap = new Map(categories.flatMap((category) => category.exercises.map((exercise) => [exercise.id, exercise])));
 let records = readJson(STORAGE_KEY, {});
 let undoState = readJson(UNDO_KEY, null);
-let saveTimers = new Map();
 
 function readJson(key, fallback) {
   try {
@@ -170,12 +169,9 @@ function bindInputs() {
       repsInput.value = record.reps;
       weightInput.value = formatWeight(record.weight);
     }
-    const queueSave = () => {
-      clearTimeout(saveTimers.get(id));
-      saveTimers.set(id, setTimeout(() => attemptSave(id), 650));
-    };
-    repsInput.addEventListener("input", queueSave);
-    weightInput.addEventListener("input", queueSave);
+    const saveWhenFinished = () => attemptSave(id);
+    repsInput.addEventListener("change", saveWhenFinished);
+    weightInput.addEventListener("change", saveWhenFinished);
     repsInput.addEventListener("keydown", (event) => { if (event.key === "Enter") weightInput.focus(); });
     weightInput.addEventListener("keydown", (event) => { if (event.key === "Enter") weightInput.blur(); });
   });
